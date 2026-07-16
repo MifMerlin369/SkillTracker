@@ -235,6 +235,27 @@ function setSaveIndicator(status){
     el._fadeTimer = setTimeout(()=>{ el.textContent = ""; el.className = "save-indicator idle"; }, 2500);
   }
 }
+function ensureSaveErrorBanner(){
+  let b = document.getElementById('save-error-banner');
+  if(!b){
+    b = document.createElement('div');
+    b.id = 'save-error-banner';
+    b.className = 'save-error-banner';
+    b.innerHTML = `<span id="save-error-text"></span><button id="save-error-retry" class="btn btn-primary btn-sm">Réessayer</button>`;
+    document.body.appendChild(b);
+    b.querySelector('#save-error-retry').addEventListener('click', ()=>{ persist(); });
+  }
+  return b;
+}
+function showSaveError(msg){
+  const b = ensureSaveErrorBanner();
+  b.querySelector('#save-error-text').textContent = "⚠ Sauvegarde impossible : " + msg + " — tes changements ne sont pas encore en sécurité.";
+  b.classList.add('show');
+}
+function hideSaveError(){
+  const b = document.getElementById('save-error-banner');
+  if(b) b.classList.remove('show');
+}
 function persist(){
   if(!state.user) return;
   if(state.dataLoadOk === false){
@@ -252,8 +273,10 @@ function persist(){
       });
       if(error) throw error;
       setSaveIndicator("saved");
+      hideSaveError();
     }catch(e){
       setSaveIndicator("error");
+      showSaveError(e && e.message ? e.message : "erreur inconnue");
       showToast("⚠ Sauvegarde impossible, réessaie");
     }
   }, 400);

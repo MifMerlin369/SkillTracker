@@ -357,6 +357,16 @@ a{color:var(--accent);}
 .save-indicator.saved{color:var(--success);}
 .save-indicator.error{color:var(--danger);}
 
+.save-error-banner{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  display:none;align-items:center;justify-content:center;gap:16px;
+  background:linear-gradient(90deg, rgba(255,77,126,0.95), rgba(255,47,176,0.95));
+  color:#1a0008;font-weight:600;font-size:13.5px;padding:12px 20px;
+  box-shadow:0 4px 20px rgba(255,77,126,0.4);
+}
+.save-error-banner.show{display:flex;}
+.save-error-banner button{background:#1a0008;color:#fff;padding:6px 14px;border-radius:8px;font-size:12.5px;}
+
 /* ===== Mot de passe oublié ===== */
 .auth-forgot{text-align:right;margin-top:10px;}
 .auth-forgot button{font-size:12.5px;color:var(--text-dim);}
