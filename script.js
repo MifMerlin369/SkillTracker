@@ -609,6 +609,10 @@ function openSettingsModal(){
   ov.innerHTML = `
     <div class="modal" style="max-width:520px;">
       <h3>Paramètres</h3>
+      <div class="settings-account">
+        <span class="account-dot"></span>
+        Connecté en tant que <strong>${esc(state.user.email)}</strong>
+      </div>
       <label style="display:block;font-size:12.5px;color:var(--text-mid);margin-bottom:10px;font-weight:600;">Thème d'accent</label>
       <div class="theme-row">
         ${Object.entries(THEME_ACCENTS).map(([key,v])=>`
@@ -1095,6 +1099,10 @@ function render(){
   app.innerHTML = `
     <div class="topbar">
       <div class="brand"><span class="dot"></span>SkillTracker <small>// SUIVI DE COMPÉTENCES</small></div>
+      <div class="account-badge" title="Connecté avec ce compte">
+        <span class="account-dot"></span>
+        <span class="account-email">${esc(state.user.email)}</span>
+      </div>
       <div class="topbar-actions">
         <span id="save-indicator" class="save-indicator idle"></span>
         <button class="btn btn-primary" id="new-skill-btn">+ Nouvelle compétence</button>

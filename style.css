@@ -75,6 +75,24 @@ a{color:var(--accent);}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.55;transform:scale(1.25);}}
 .brand small{font-family:var(--font-mono);font-size:11px;color:var(--text-dim);font-weight:400;letter-spacing:2px;margin-left:2px;}
 
+.account-badge{
+  display:flex;align-items:center;gap:8px;
+  padding:7px 14px;border-radius:100px;
+  background:rgba(57,255,176,0.08);border:1px solid rgba(57,255,176,0.25);
+  font-family:var(--font-mono);font-size:12.5px;color:var(--text-mid);
+}
+.account-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--success);flex-shrink:0;
+  box-shadow:0 0 8px 1px rgba(57,255,176,0.7);animation:pulse 2.4s ease-in-out infinite;
+}
+.account-email{color:var(--text-hi);font-weight:500;}
+.settings-account{
+  display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-mid);
+  padding:10px 12px;border-radius:10px;background:rgba(57,255,176,0.06);
+  border:1px solid rgba(57,255,176,0.2);margin-bottom:20px;
+}
+.settings-account strong{color:var(--text-hi);}
+
 .topbar-actions{display:flex;gap:10px;flex-wrap:wrap;}
 .btn{
   display:inline-flex;align-items:center;gap:8px;
